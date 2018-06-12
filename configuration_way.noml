@@ -1,0 +1,2 @@
+[app01.application.cluster.local]->[postgres|DATABASE_URL]
+[postgres|DATABASE_URL]->[192.168.0.10:5432]

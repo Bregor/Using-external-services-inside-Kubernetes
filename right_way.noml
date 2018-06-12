@@ -1,0 +1,4 @@
+[app01.application.cluster.local]->[postgres|DATABASE_URL]
+[postgres|DATABASE_URL]->[kube-dns]
+[kube-dns]->[app01.application.cluster.local]
+[app01.application.cluster.local]->[192.168.0.10:5432]
