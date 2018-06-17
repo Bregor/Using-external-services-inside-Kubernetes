@@ -39,7 +39,11 @@ export DATABASE_URL='postgresql://application@192.168.0.10:5432/production_db'
 #+END_SRC
 [[./configuration_way.png]]
 ** WRONG
-   - You should resetup ALL related deployments and restart ALL theirs pods for hosted service address reconfiguration
+*** Database failure
+    #+BEGIN_SRC shell-script
+    export DATABASE_URL='postgresql://application@192.168.0.11:5432/production_db'
+    #+END_SRC
+    - You should resetup ALL related deployments and restart ALL theirs pods for hosted service address reconfiguration
 ** DNS way
 #+BEGIN_SRC dns
 postgres IN A 192.168.0.10
@@ -49,8 +53,10 @@ export DATABASE_URL="postgresql://application@postgres.somezone.tld:5432/product
 #+END_SRC
 [[./dns_way.png]]
 ** WRONG!
-   - Remember about DNS cache
-   - Actually it is easier to kill all related pods
+*** Database failure
+    - update DNS record
+    - Remember about DNS cache
+    - Actually it is easier to kill all related pods
 * External services. The right way
   Use +force+ [[https://kubernetes.io/docs/concepts/services-networking/service/][endpoints and services]], Luke!
 ** Obvious example
